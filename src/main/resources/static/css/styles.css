@@ -1,0 +1,10 @@
+.cabecera{
+    display: flex;
+    justify-content: center;
+    background-color: #cccccc;
+}
+.cuerpo{
+    display: flex;
+    justify-content: center;
+    background-color: #dddddd;
+}
