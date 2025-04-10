@@ -13,6 +13,6 @@
         <div th:insert="~{body :: body}"></div>
     </div>
 
-    <p th:text="${mapa.saludo} + ${mapa.nombre}"></p>
+    <p th:text="${mapa.saludo} + ' ' + ${mapa.nombre}"></p>
 </body>
 </html>
