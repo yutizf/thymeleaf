@@ -39,8 +39,8 @@ public class HomeController {
         return "archivo";
     }
 
-    @GetMapping("leer")
-    public String leerArchivo(){
+    @GetMapping("/leer")
+    public String leerArchivo(Model model){
         String rutaVolumen = "/data/archivo.txt";
         File archivo = new File(rutaVolumen);
         String archiTxt="";
