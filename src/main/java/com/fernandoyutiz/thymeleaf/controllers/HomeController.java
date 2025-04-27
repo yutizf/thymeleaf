@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,5 +37,24 @@ public class HomeController {
             System.err.println("Error al guardar el archivo: " + e.getMessage());
         }
         return "archivo";
+    }
+
+    public String leerArchivo(){
+        String rutaVolumen = "/data/archivo.txt";
+        File archivo = new File(rutaVolumen);
+        String archiTxt="";
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+                System.out.println(linea); // Imprimir el contenido del archivo
+                archiTxt += linea;
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+        Map<String,String> mapa= new HashMap<>();
+        mapa.put("archivo",archiTxt);
+        return "archivoleer";
     }
 }
