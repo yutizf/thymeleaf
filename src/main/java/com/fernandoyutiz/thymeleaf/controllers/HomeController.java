@@ -39,6 +39,7 @@ public class HomeController {
         return "archivo";
     }
 
+    @GetMapping("leer")
     public String leerArchivo(){
         String rutaVolumen = "/data/archivo.txt";
         File archivo = new File(rutaVolumen);
