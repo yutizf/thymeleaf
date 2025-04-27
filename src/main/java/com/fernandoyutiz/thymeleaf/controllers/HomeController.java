@@ -56,6 +56,7 @@ public class HomeController {
         }
         Map<String,String> mapa= new HashMap<>();
         mapa.put("archivo",archiTxt);
+        model.addAttribute("mapa",mapa);
         return "archivoleer";
     }
 }
