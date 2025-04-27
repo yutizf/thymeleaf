@@ -5,6 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,5 +26,19 @@ public class HomeController {
         mapa.put("entorno", entorno);
         model.addAttribute("mapa",mapa);
         return "hello";
+    }
+
+    @GetMapping("/archivo")
+    public String guardarArchivo(){
+        String rutaVolumen = "/data/archivo.txt";
+        String texto = "¡Hola desde Railway!";
+        File archivo = new File(rutaVolumen);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+            writer.write(texto);
+            System.out.println("Archivo guardado exitosamente en: " + rutaVolumen);
+        } catch (IOException e) {
+            System.err.println("Error al guardar el archivo: " + e.getMessage());
+        }
+        return "archivo";
     }
 }
